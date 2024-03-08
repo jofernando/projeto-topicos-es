@@ -1,4 +1,4 @@
-package br.edu.ufape.topicoses.discovery;
+package br.edu.ufape.discovery;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

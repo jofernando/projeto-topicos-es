@@ -1,4 +1,4 @@
-package br.edu.ufape.topicoses.discovery;
+package br.edu.ufape.discovery;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
