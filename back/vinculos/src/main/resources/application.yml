@@ -1,0 +1,22 @@
+# Database configuration
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/vinculos-service
+    username: Caio
+    password: 55555
+
+# Hibernate configuration
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+   
+        
+
+logging:
+  level:
+    org.springframework.web: DEBUG
