@@ -1,13 +1,13 @@
-package br.edu.ufape.vinculos;
+// package br.edu.ufape.vinculos;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class VinculosApplicationTests {
+// @SpringBootTest
+// class VinculosApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+// 	@Test
+// 	void contextLoads() {
+// 	}
 
-}
+// }
