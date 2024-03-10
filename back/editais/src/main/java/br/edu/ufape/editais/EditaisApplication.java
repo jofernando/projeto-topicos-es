@@ -1,8 +1,10 @@
+package br.edu.ufape.editais;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MeuAppApplication {
+public class EditaisApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(MeuAppApplication.class, args);
