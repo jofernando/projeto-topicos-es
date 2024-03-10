@@ -1,4 +1,8 @@
+package br.edu.ufape.editais.model;
+
 public class Vaga {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private int quantidade;
 
     public Vaga() {
