@@ -1,4 +1,4 @@
-package br.edu.ufape.topicoses.gateway;
+package br.edu.ufape.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
