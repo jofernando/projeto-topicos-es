@@ -3,6 +3,7 @@ package br.edu.ufape.editais.controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
+import br.edu.ufape.editais.model.Vaga;
 
 @RestController
 @RequestMapping("/vagas")
