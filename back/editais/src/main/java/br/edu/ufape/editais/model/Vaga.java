@@ -1,27 +1,23 @@
 package br.edu.ufape.editais.model;
 
-public class Vaga {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private int quantidade;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import jakarta.persistence.*;
+import lombok.*;
 
-    public Vaga() {
-    }
-
-    public Vaga(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public <T> T method(Class<T> type) {
-        // Implementação do método que ta no diagr mas...?
-        return null;
-    }
+@Data
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Edital {
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+    private String descricao;
+    private String editalArquivo;
+    private Date inicioInscricao;
+    private Date fimInscricao;
+    private Map<String, List<String>> classificacaoFinal;
 }

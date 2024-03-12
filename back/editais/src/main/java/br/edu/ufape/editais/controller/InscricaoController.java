@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.ufape.editais.model.Inscricao;
+
 @RestController
 @RequestMapping("/inscricoes")
 public class InscricaoController {
