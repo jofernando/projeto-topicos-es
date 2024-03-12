@@ -1,5 +1,7 @@
 # Database configuration
 spring:
+  application:
+    name: vinculos
   datasource:
     url: jdbc:postgresql://localhost:5432/vinculos-service
     username: Caio
@@ -14,8 +16,10 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-   
-        
+
+# Server configuration
+server:
+  port: 8084
 
 logging:
   level:
