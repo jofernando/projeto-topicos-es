@@ -10,7 +10,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Inscricao {
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private Bolsa bolsa;
     private String historicoEscolar;
@@ -18,4 +19,11 @@ public class Inscricao {
     private String funcao;
     private String comprovanteMatricula;
     private long userId;
+    
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 }
