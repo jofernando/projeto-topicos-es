@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: editais
+  datasource:
+    url: jdbc:postgresql://localhost:5432postgres
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+server:
+  port: 8090

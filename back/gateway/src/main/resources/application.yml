@@ -43,6 +43,13 @@ spring.cloud.gateway.routes:
   predicates:
     - Path=/arquivos/**
   filters:
+    - StripPrefix=1
+- id: arquivo_route
+
+  uri: lb://EDITAIS/
+  predicates:
+    - Path=/editais/**
+  filters:
     - StripPrefix=1 
     
 app.eureka-server: localhost  
