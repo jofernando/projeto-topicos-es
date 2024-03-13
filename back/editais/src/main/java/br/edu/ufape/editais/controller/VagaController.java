@@ -15,28 +15,28 @@ public class VagaController {
         vagas.add(vaga);
     }
 
-    @GetMapping("/{quantidade}")
-    public Vaga buscarVagaPorQuantidade(@PathVariable int quantidade) {
+    @GetMapping("/{id}")
+    public Vaga buscarVagas(@PathVariable int id) {
         for (Vaga vaga : vagas) {
-            if (vaga.getQuantidade() == quantidade) {
+            if (vaga.getId() == id) {
                 return vaga;
             }
         }
         return null;
     }
 
-    @PutMapping("/{quantidade}")
-    public void atualizarVaga(@PathVariable int quantidade, @RequestBody Vaga vaga) {
+    @PutMapping("/{id}")
+    public void atualizarVaga(@PathVariable int id, @RequestBody Vaga vaga) {
         for (int i = 0; i < vagas.size(); i++) {
-            if (vagas.get(i).getQuantidade() == quantidade) {
+            if (vagas.get(i).getId() == id) {
                 vagas.set(i, vaga);
                 return;
             }
         }
     }
 
-    @DeleteMapping("/{quantidade}")
-    public void deletarVaga(@PathVariable int quantidade) {
-        vagas.removeIf(vaga -> vaga.getQuantidade() == quantidade);
+    @DeleteMapping("/{id}")
+    public void deletarVaga(@PathVariable int id) {
+        vagas.removeIf(vaga -> vaga.getId() == id);
     }
 }

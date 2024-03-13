@@ -1,8 +1,5 @@
 package br.edu.ufape.editais.model;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,12 +9,21 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Edital {
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-    private String descricao;
-    private String editalArquivo;
-    private Date inicioInscricao;
-    private Date fimInscricao;
-    private Map<String, List<String>> classificacaoFinal;
+public class Vaga {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private int quantidade;
+
+    public <T> T method(Class<T> type) {
+        return null;
+    }
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 }

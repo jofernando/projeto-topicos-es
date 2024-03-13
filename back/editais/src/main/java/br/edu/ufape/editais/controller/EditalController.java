@@ -16,7 +16,7 @@ public class EditalController {
     public void criarEdital(@RequestBody Edital edital) {
         editais.add(edital);
     }
-
+    
     @GetMapping("/{descricao}")
     public Edital buscarEditalPorDescricao(@PathVariable String descricao) {
         for (Edital edital : editais) {
@@ -41,4 +41,5 @@ public class EditalController {
     public void deletarEdital(@PathVariable String descricao) {
         editais.removeIf(edital -> edital.getDescricao().equals(descricao));
     }
+    
 }

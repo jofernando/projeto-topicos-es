@@ -16,28 +16,28 @@ public class InscricaoController {
         inscricoes.add(inscricao);
     }
 
-    @GetMapping("/{userId}")
-    public Inscricao buscarInscricaoPorUserId(@PathVariable long userId) {
+    @GetMapping("/{id}")
+    public Inscricao buscarInscricaoPorMatricula(@PathVariable long id) {
         for (Inscricao inscricao : inscricoes) {
-            if (inscricao.getUserId() == userId) {
+            if (inscricao.getId() == id) {
                 return inscricao;
             }
         }
         return null;
     }
 
-    @PutMapping("/{userId}")
-    public void atualizarInscricao(@PathVariable long userId, @RequestBody Inscricao inscricao) {
+    @PutMapping("/{id}")
+    public void atualizarInscricao(@PathVariable long id, @RequestBody Inscricao inscricao) {
         for (int i = 0; i < inscricoes.size(); i++) {
-            if (inscricoes.get(i).getUserId() == userId) {
+            if (inscricoes.get(i).getId() == id) {
                 inscricoes.set(i, inscricao);
                 return;
             }
         }
     }
 
-    @DeleteMapping("/{userId}")
-    public void deletarInscricao(@PathVariable long userId) {
-        inscricoes.removeIf(inscricao -> inscricao.getUserId() == userId);
+    @DeleteMapping("/{id}")
+    public void deletarInscricao(@PathVariable long id) {
+        inscricoes.removeIf(inscricao -> inscricao.getId() == id);
     }
 }
