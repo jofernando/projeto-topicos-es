@@ -30,14 +30,20 @@ spring.cloud.gateway.routes:
     - Path=/usuario/**
   filters:
     - StripPrefix=1
-            
-            
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
 
+- id: vinculo_route
+  uri: lb://VINCULOS/
+  predicates:
+    - Path=/vinculos/**
+  filters:
+    - StripPrefix=1            
+
+- id: arquivo_route
+  uri: lb://ARQUIVOS/
+  predicates:
+    - Path=/arquivos/**
+  filters:
+    - StripPrefix=1 
     
 app.eureka-server: localhost  
 ---
