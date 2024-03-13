@@ -1,11 +1,10 @@
 package br.edu.ufape.editais.controller;
 
 import org.springframework.web.bind.annotation.*;
-
-import br.edu.ufape.editais.model.Edital;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import br.edu.ufape.editais.model.Edital;
 
 @RestController
 @RequestMapping("/editais")
@@ -17,29 +16,34 @@ public class EditalController {
         editais.add(edital);
     }
     
-    @GetMapping("/{descricao}")
-    public Edital buscarEditalPorDescricao(@PathVariable String descricao) {
+    @GetMapping
+    public List<Edital> buscarTodosEditais(){
+    	return editais;
+    }
+    
+    @GetMapping("/{id}")
+    public Edital buscarEditalPorDescricao(@PathVariable long id) {
         for (Edital edital : editais) {
-            if (edital.getDescricao().equals(descricao)) {
+            if (edital.getId() == id) {
                 return edital;
             }
         }
         return null;
     }
 
-    @PutMapping("/{descricao}")
-    public void atualizarEdital(@PathVariable String descricao, @RequestBody Edital edital) {
+    @PutMapping("/{id}")
+    public void atualizarEdital(@PathVariable long id, @RequestBody Edital edital) {
         for (int i = 0; i < editais.size(); i++) {
-            if (editais.get(i).getDescricao().equals(descricao)) {
+            if (editais.get(i).getId() == id) {
                 editais.set(i, edital);
                 return;
             }
         }
     }
 
-    @DeleteMapping("/{descricao}")
-    public void deletarEdital(@PathVariable String descricao) {
-        editais.removeIf(edital -> edital.getDescricao().equals(descricao));
+    @DeleteMapping("/{id}")
+    public void deletarEdital(@PathVariable long id) {
+        editais.removeIf(edital -> edital.getId() == id);
     }
     
 }

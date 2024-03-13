@@ -15,6 +15,11 @@ public class InscricaoController {
     public void criarInscricao(@RequestBody Inscricao inscricao) {
         inscricoes.add(inscricao);
     }
+    
+    @GetMapping
+    public List<Inscricao> buscarTodasInscricoes(){
+    	return inscricoes;
+    }
 
     @GetMapping("/{id}")
     public Inscricao buscarInscricaoPorMatricula(@PathVariable long id) {
