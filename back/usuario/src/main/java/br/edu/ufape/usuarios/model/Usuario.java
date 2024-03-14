@@ -24,7 +24,7 @@ public class Usuario {
 	private Long id;
 	// id do keycloak
 	@NotBlank
-	private String userId;
+	private String keycloak;
 	@Column(unique = true)
 	@NotBlank
 	private String login;
