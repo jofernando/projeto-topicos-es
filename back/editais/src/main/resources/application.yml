@@ -2,7 +2,7 @@ spring:
   application:
     name: editais
   datasource:
-    url: jdbc:postgresql://localhost:5432postgres
+    url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: admin
     driver-class-name: org.postgresql.Driver
@@ -14,3 +14,12 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 server:
   port: 8090
+
+---
+spring.config.activate.on-profile: docker
+server.port: 8080
+spring.datasource.url: jdbc:postgresql://editais-db:5432/postgres
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/
