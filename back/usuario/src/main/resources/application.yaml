@@ -19,3 +19,12 @@ springdoc:
     path: /api/docs
   swagger-ui:
     path: /api/swagger.html
+
+---
+spring.config.activate.on-profile: docker
+server.port: 8080
+spring.datasource.url: jdbc:postgresql://usuario-db:5432/mydatabase
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/

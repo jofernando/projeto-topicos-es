@@ -24,3 +24,13 @@ server:
 logging:
   level:
     org.springframework.web: DEBUG
+
+
+---
+spring.config.activate.on-profile: docker
+server.port: 8080
+spring.datasource.url: jdbc:postgresql://vinculos-db:5432/vinculos-service
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/
