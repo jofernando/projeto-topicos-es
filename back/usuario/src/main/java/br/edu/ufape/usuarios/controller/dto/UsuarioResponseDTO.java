@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class UsuarioResponseDTO {
     private Long id;
     // id do keycloak
-    private String userId;
+    private String keycloak;
     private String login;
     private String nome;
     private boolean gestao;
