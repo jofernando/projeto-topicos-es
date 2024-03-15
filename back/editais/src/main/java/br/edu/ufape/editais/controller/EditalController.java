@@ -1,49 +1,67 @@
 package br.edu.ufape.editais.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
+import org.springframework.web.util.UriComponentsBuilder;
+
 import java.util.List;
 
 import br.edu.ufape.editais.model.Edital;
+import br.edu.ufape.editais.model.dto.DadosAtualizarEdital;
+import br.edu.ufape.editais.model.dto.DadosDetalhamentoEdital;
+import br.edu.ufape.editais.model.dto.DadosListagemEdital;
+import br.edu.ufape.editais.model.dto.EditalDTO;
+import br.edu.ufape.editais.repository.EditalRepository;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/editais")
 public class EditalController {
-    private List<Edital> editais = new ArrayList<>();
 
+    @Autowired
+    private EditalRepository repository;
+    
     @PostMapping
-    public void criarEdital(@RequestBody Edital edital) {
-        editais.add(edital);
+    public ResponseEntity<DadosDetalhamentoEdital> cadastrarEdital(@RequestBody EditalDTO dados, UriComponentsBuilder uriBuilder) {
+    	var edital = new Edital(dados);
+    	repository.save(new Edital(dados));
+    	
+    	var uri = uriBuilder.path("/editais/{id}").buildAndExpand(edital.getId()).toUri();
+    	
+    	return ResponseEntity.created(uri).body(new DadosDetalhamentoEdital(edital));
     }
     
     @GetMapping
-    public List<Edital> buscarTodosEditais(){
-    	return editais;
+    public ResponseEntity<List<DadosListagemEdital>> listarEditais(){
+    	var lista = repository.findAll().stream().map(DadosListagemEdital :: new).toList();
+    	
+    	return ResponseEntity.ok(lista);
     }
     
     @GetMapping("/{id}")
-    public Edital buscarEditalPorDescricao(@PathVariable long id) {
-        for (Edital edital : editais) {
-            if (edital.getId() == id) {
-                return edital;
-            }
-        }
-        return null;
-    }
-
-    @PutMapping("/{id}")
-    public void atualizarEdital(@PathVariable long id, @RequestBody Edital edital) {
-        for (int i = 0; i < editais.size(); i++) {
-            if (editais.get(i).getId() == id) {
-                editais.set(i, edital);
-                return;
-            }
-        }
-    }
-
-    @DeleteMapping("/{id}")
-    public void deletarEdital(@PathVariable long id) {
-        editais.removeIf(edital -> edital.getId() == id);
+    public ResponseEntity<DadosDetalhamentoEdital> buscarEditalPorId(@PathVariable Long id) {
+    	var edital = repository.getReferenceById(id);
+    	
+    	return ResponseEntity.ok(new DadosDetalhamentoEdital(edital));
     }
     
+    @PutMapping
+    @Transactional
+    public ResponseEntity<DadosDetalhamentoEdital> atualizarEdital(@RequestBody @Valid DadosAtualizarEdital dados) {
+    	var edital = repository.getReferenceById(dados.id());
+        edital.atualizarInformacoes(dados);
+        
+        return ResponseEntity.ok(new DadosDetalhamentoEdital(edital));
+    }
+    
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<Void> excluirEdital(@PathVariable Long id) {
+    	repository.deleteById(id);
+    	
+    	return ResponseEntity.noContent().build();
+    }
+
 }

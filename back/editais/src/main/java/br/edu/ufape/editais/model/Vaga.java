@@ -1,5 +1,7 @@
 package br.edu.ufape.editais.model;
 
+import br.edu.ufape.editais.model.dto.DadosAtualizarVaga;
+import br.edu.ufape.editais.model.dto.VagaDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,16 +16,35 @@ public class Vaga {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private int quantidade;
+    private boolean ativa;
 
-    public <T> T method(Class<T> type) {
-        return null;
+    public Vaga(VagaDTO dados) {
+    	this.quantidade = dados.quantidade();
+    	this.ativa = dados.ativa();
+    }
+    
+    // Método para verificar se a quantidade de pessoas concorrendo está dentro do intervalo permitido
+    public boolean VagaValida() {
+    	if(this.quantidade >= 30 || this.quantidade <= 60) {
+    		ativar();
+    		return this.ativa;
+    	}
+    	inativar();
+    	return this.ativa;
     }
 
-	public long getId() {
-		return id;
+	public void atualizarInformacoes(DadosAtualizarVaga dados) {
+		if (dados.quantidade() != 0) {
+			this.quantidade = dados.quantidade();
+		}
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void inativar() {
+		this.ativa = false;
 	}
+
+	public void ativar() {
+	    this.ativa = true;
+	}
+
 }
