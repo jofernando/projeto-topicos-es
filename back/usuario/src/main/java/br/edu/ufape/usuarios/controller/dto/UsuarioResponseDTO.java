@@ -1,5 +1,6 @@
 package br.edu.ufape.usuarios.controller.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +22,7 @@ public class UsuarioResponseDTO {
     private String celular;
     private String rg;
     private String orgaoExpedidorRg;
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate emissaoRg;
     private String cpf;
     private String assinaturaPath;
