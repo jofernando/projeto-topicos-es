@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import br.edu.ufape.usuarios.model.enums.EstadoCivil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -23,7 +24,7 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	// id do keycloak
-	@NotBlank
+	@Nullable
 	private String keycloak;
 	@Column(unique = true)
 	@NotBlank
