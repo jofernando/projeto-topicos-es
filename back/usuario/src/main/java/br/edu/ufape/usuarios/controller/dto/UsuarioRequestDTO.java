@@ -1,6 +1,7 @@
 package br.edu.ufape.usuarios.controller.dto;
 
 import br.edu.ufape.usuarios.model.enums.EstadoCivil;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +22,7 @@ public class UsuarioRequestDTO
     private String celular;
     private String rg;
     private String orgaoExpedidorRg;
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate emissaoRg;
     private String cpf;
     private boolean gestao;

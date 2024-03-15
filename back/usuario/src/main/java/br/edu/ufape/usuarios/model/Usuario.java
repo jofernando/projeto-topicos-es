@@ -1,7 +1,5 @@
 package br.edu.ufape.usuarios.model;
 
-import java.time.LocalDate;
-
 import br.edu.ufape.usuarios.model.enums.EstadoCivil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -14,6 +12,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -45,6 +46,7 @@ public class Usuario {
 	private String orgaoExpedidorRg;
 	@Past
 	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate emissaoRg;
 	@NotBlank
 	@CPF
