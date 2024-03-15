@@ -24,7 +24,7 @@ public class InscricaoController {
     private InscricaoRepository repository;
     
     @PostMapping
-    public ResponseEntity<DadosDetalhamentoInscricao> cadastrarInscricao(@RequestBody InscricaoDTO dados, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<DadosDetalhamentoInscricao> cadastrarInscricao(@RequestBody @Valid InscricaoDTO dados, UriComponentsBuilder uriBuilder) {
     	var inscricao = new Inscricao(dados);
     	repository.save(new Inscricao(dados));
     	
