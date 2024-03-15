@@ -23,7 +23,7 @@ public class VagaController {
     private VagaRepository repository;
     
     @PostMapping
-    public ResponseEntity<DadosDetalhamentoVaga> cadastrarVaga(@RequestBody VagaDTO dados, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<DadosDetalhamentoVaga> cadastrarVaga(@RequestBody @Valid VagaDTO dados, UriComponentsBuilder uriBuilder) {
     	var vaga = new Vaga(dados);
     	repository.save(new Vaga(dados));
     	

@@ -24,7 +24,7 @@ public class EditalController {
     private EditalRepository repository;
     
     @PostMapping
-    public ResponseEntity<DadosDetalhamentoEdital> cadastrarEdital(@RequestBody EditalDTO dados, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<DadosDetalhamentoEdital> cadastrarEdital(@RequestBody @Valid EditalDTO dados, UriComponentsBuilder uriBuilder) {
     	var edital = new Edital(dados);
     	repository.save(new Edital(dados));
     	
